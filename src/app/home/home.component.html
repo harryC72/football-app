@@ -1,0 +1,14 @@
+<h1>Competitions</h1>
+
+<ul *ngIf="competitions">
+  <li *ngFor="let comp of competitions">
+    <a
+      [title]="comp.name + ' details'"
+      [routerLink]="['/', comp.name]"
+      [state]="{ data: comp }"
+    >
+      <p class="name">{{ comp.name }}</p>
+      <p class="country">{{ comp.area.name }}</p>
+    </a>
+  </li>
+</ul>
