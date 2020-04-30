@@ -1,1 +1,20 @@
-<p>competition works!</p>
+<div class="container"></div>
+<div>
+  <div class="flex-grid top">
+    <div class="col">{{ state.data.name }}</div>
+    <div class="col">Home Team</div>
+    <div class="col">Away Team</div>
+  </div>
+  <div *ngIf="matches">
+    <div *ngFor="let match of matches.matches">
+      <a
+        class="flex-grid content"
+        [routerLink]="['/' + state.data.name, match.id]"
+      >
+        <div class="col rim">{{ state.data.name }}</div>
+        <div class="col rim">{{ match.homeTeam.name }}</div>
+        <div class="col rim">{{ match.awayTeam.name }}</div>
+      </a>
+    </div>
+  </div>
+</div>

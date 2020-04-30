@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { CompetitionComponent } from './competition/competition.component';
+import { EventComponent } from './event/event.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: ':name', component: CompetitionComponent },
+  { path: ':name/:id', component: EventComponent },
 ];
 
 @NgModule({

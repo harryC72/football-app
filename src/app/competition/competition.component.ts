@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { HttpService } from './../http.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,11 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CompetitionComponent implements OnInit {
   state;
+  matches;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private http: HttpService) {}
 
   ngOnInit() {
     this.state = history.state;
     console.log('STATE', this.state);
+
+    this.http.getMatches(this.state.data.id).subscribe((data) => {
+      this.matches = data;
+      console.log(this.matches);
+    });
   }
 }

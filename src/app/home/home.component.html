@@ -5,7 +5,7 @@
     <a
       [title]="comp.name + ' details'"
       [routerLink]="['/', comp.name]"
-      [state]="{ data: comp }"
+      [state]="{ data: { name: comp.name, id: comp.id } }"
     >
       <p class="name">{{ comp.name }}</p>
       <p class="country">{{ comp.area.name }}</p>
