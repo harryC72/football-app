@@ -1,6 +1,6 @@
 // @import "../../../styles.scss";
 
-//LETS PASTE IT IN AND THEN TAKE CARE OF THIS 
+//LETS PASTE IT IN AND THEN TAKE CARE OF THIS
 
 /* You can add global styles to this file, and also import other style files */
 @import "~normalize.css";
@@ -143,8 +143,8 @@ h1 {
   padding: 8px 0 8px 10px;
 }
 
-.center {
-  justify-content: center;
+.spread {
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -165,9 +165,6 @@ h1 {
   justify-content: flex-start;
   flex-grow: 1;
 }
-
-
-
 
 span {
   font-weight: $fat;
@@ -233,4 +230,8 @@ img#logo-side {
   position: relative;
   text-align: center;
   color: white;
+}
+
+svg {
+  padding-right: 3px;
 }

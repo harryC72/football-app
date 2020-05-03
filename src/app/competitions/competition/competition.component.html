@@ -1,10 +1,13 @@
-<div class="box">
-  <div class="flex-grid top">
-    <div class="col">{{ state.data.name }}</div>
-    <div class="col">Home Team</div>
-    <div class="col">Away Team</div>
-  </div>
-  <div *ngIf="matches">
+<div *ngIf="matches === undefined">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="matches">
+  <div class="box">
+    <div class="flex-grid top">
+      <div class="col above">League</div>
+      <div class="col above">Home Team</div>
+      <div class="col above">Away Team</div>
+    </div>
     <div *ngFor="let match of matches">
       <a
         class="flex-grid content"

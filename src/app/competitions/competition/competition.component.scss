@@ -86,6 +86,7 @@ header {
       li a {
         padding: 1em;
         margin-right: 40px;
+        text-decoration: none;
 
         &:hover {
           background: darken($primary, 10%);
@@ -175,10 +176,15 @@ h1 {
   margin: auto;
   width: 80%;
   background: $primary;
+  text-decoration: none;
 }
 
 .col {
   flex: 1;
+}
+
+.above {
+  padding-left: 8px;
 }
 
 @media (max-width: 400px) {
@@ -197,6 +203,9 @@ h1 {
 
 .top {
   background: $primary;
+  height: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .content {
@@ -204,6 +213,7 @@ h1 {
   color: #000000;
   cursor: pointer;
   height: 66px;
+  text-decoration: none;
 }
 
 .rim {

@@ -1,6 +1,32 @@
+<div *ngIf="match === undefined">
+  <app-spinner></app-spinner>
+</div>
+
 <div class="container" *ngIf="match">
-  <div class="flex-grid top rim center">
-    {{ match.head2head.homeTeam.name }} vs {{ match.head2head.awayTeam.name }}
+  <div class="flex-grid top rim spread">
+    <span></span>
+    <span
+      >{{ match.head2head.homeTeam.name }} vs
+      {{ match.head2head.awayTeam.name }}</span
+    >
+    <span>
+      <a
+        [title]="match.match.competition.name + ' details'"
+        [routerLink]="['/', match.match.competition.name]"
+        [state]="{
+          data: {
+            name: match.match.competition.name,
+            id: match.match.competition.id
+          }
+        }"
+      >
+        <svg-icon
+          src="../../../assets/svg/clear-24px .svg"
+          [svgStyle]="{ fill: 'white' }"
+        >
+        </svg-icon>
+      </a>
+    </span>
   </div>
   <div class="content-box">
     <div class="content-column">

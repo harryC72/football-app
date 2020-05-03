@@ -1,5 +1,8 @@
 <div class="grand-box">
   <h1>Competitions</h1>
+  <div *ngIf="competitions === undefined">
+    <app-spinner></app-spinner>
+  </div>
   <ul *ngIf="competitions">
     <li *ngFor="let comp of competitions">
       <a
