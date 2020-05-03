@@ -1,0 +1,212 @@
+// @import "../../../styles.scss;
+
+//LET'S FIRST PASTE IT IN AND THEN TAKE CARE OF IT
+
+/* You can add global styles to this file, and also import other style files */
+@import "~normalize.css";
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+
+$primary: #383838;
+$background: #212121;
+$content-box: #e4e4e4;
+$arrow-color: #626262;
+$fat: 700;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", "sans-serif";
+  font-size: 12px;
+  background: $background;
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+}
+
+.cont-lower {
+  height: auto;
+}
+
+header {
+  padding: 1em 0;
+  text-transform: uppercase;
+  height: 100%;
+
+  #nav-logo {
+    width: 126px;
+    height: auto;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a.logo {
+    font-weight: bold;
+    margin-left: 40px;
+  }
+
+  #pointer-active {
+    width: 200px;
+    height: 40px;
+    position: relative;
+    background: $arrow-color;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    top: 17px;
+  }
+  #pointer-active:before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid $arrow-color;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+  }
+
+  nav {
+    float: left;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      display: flex;
+      height: 48px;
+      background: $primary;
+
+      li a {
+        padding: 1em;
+        margin-right: 40px;
+
+        &:hover {
+          background: darken($primary, 10%);
+        }
+      }
+    }
+  }
+}
+
+h1 {
+  margin-top: 2em;
+}
+
+.box {
+  margin: auto;
+  width: 80%;
+  background: $primary;
+}
+
+.flex-grid {
+  display: flex;
+  height: 22px;
+}
+.col {
+  flex: 1;
+}
+
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
+}
+
+.flex-grid-space {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-grid-thirds .col {
+  width: 32%;
+}
+
+.top {
+  background: $primary;
+}
+
+.content {
+  background: white;
+  color: #000000;
+  cursor: pointer;
+  height: 66px;
+}
+
+.rim {
+  border: 1px solid #d7d7d7;
+  padding: 8px 0 8px 10px;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.content-box-small {
+  background: $content-box;
+  margin: 3px;
+  padding: 3px;
+  color: #000000;
+}
+
+.box-stretch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.flex-grid {
+  display: flex;
+  height: 22px;
+}
+
+.box {
+  margin: auto;
+  width: 80%;
+  background: $primary;
+}
+
+.col {
+  flex: 1;
+}
+
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
+}
+
+.flex-grid-thirds {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-grid-thirds .col {
+  width: 32%;
+}
+
+.top {
+  background: $primary;
+}
+
+.content {
+  background: white;
+  color: #000000;
+  cursor: pointer;
+  height: 66px;
+}
+
+.rim {
+  border: 1px solid #d7d7d7;
+  padding: 8px 0 8px 10px;
+}

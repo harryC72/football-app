@@ -5,13 +5,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CompetitionComponent } from './competition/competition.component';
-import { EventComponent } from './event/event.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CompetitionsModule } from './competitions/competitions.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CompetitionComponent, EventComponent, PageNotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, HomeComponent, PageNotFoundComponent],
+  imports: [
+    BrowserModule,
+    CompetitionsModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
