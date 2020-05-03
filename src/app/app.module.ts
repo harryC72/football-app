@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { EventComponent } from './event/event.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CompetitionComponent, EventComponent],
+  declarations: [AppComponent, HomeComponent, CompetitionComponent, EventComponent, PageNotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
