@@ -18,7 +18,10 @@ export class CompetitionComponent implements OnInit {
     console.log('STATE', this.state);
 
     this.http.getMatches(this.state.data.id).subscribe((data) => {
-      this.matches = data;
+      this.matches = data['matches'].filter(
+        (item) => item.status !== 'FINISHED'
+      );
+
       console.log(this.matches);
     });
   }

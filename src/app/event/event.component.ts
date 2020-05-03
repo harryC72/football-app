@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.scss'],
 })
 export class EventComponent implements OnInit {
-  constructor() {}
+  state;
+  match;
+  constructor(private http: HttpService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.state = history.state;
+    console.log('STATE EVENT', this.state);
+
+    this.http.getMatch(this.state.data.id).subscribe((data) => {
+      this.match = data;
+      console.log(this.match);
+    });
+  }
 }

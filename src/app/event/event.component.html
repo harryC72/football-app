@@ -1,1 +1,62 @@
-<p>event works!</p>
+<div class="container" *ngIf="match">
+  <div class="flex-grid top rim center">
+    {{ match.head2head.homeTeam.name }} vs {{ match.head2head.awayTeam.name }}
+  </div>
+  <div class="content-box">
+    <div class="content-column">
+      <div class="sub-heading">Teams</div>
+      <div class="flex-grid-space content row col-width">
+        <div class="content-box-small box-stretch">
+          <div>{{ match.head2head.homeTeam.name }}</div>
+          <div>
+            Wins: <span>{{ match.head2head.homeTeam.wins }}</span>
+          </div>
+          <div>
+            Draws: <span>{{ match.head2head.homeTeam.draws }}</span>
+          </div>
+          <div>
+            Losses: <span>{{ match.head2head.homeTeam.losses }}</span>
+          </div>
+        </div>
+        <div class="content-box-small box-stretch">
+          <div>{{ match.head2head.awayTeam.name }}</div>
+          <div>
+            Wins: <span>{{ match.head2head.awayTeam.wins }}</span>
+          </div>
+          <div>
+            Draws: <span>{{ match.head2head.awayTeam.draws }}</span>
+          </div>
+          <div>
+            Losses: <span>{{ match.head2head.awayTeam.losses }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="image-container">
+        <div class="top-left">
+          <div>
+            Fotball / {{ match.match.competition.name }}
+            {{ match.match.competition.area.name }}
+          </div>
+          <div>
+            <div>{{ match.head2head.homeTeam.name }}</div>
+            <div>{{ match.head2head.awayTeam.name }}</div>
+          </div>
+        </div>
+        <img
+          id="fotball"
+          alt="fotball"
+          src="../../assets/img/football-606235_640.jpg"
+        />
+      </div>
+    </div>
+    <div>
+      <img
+        id="logo-side"
+        alt="Betsson-logo"
+        src="../../assets/svg/betsson.brand-logo-grey_v3.svg"
+      />
+    </div>
+  </div>
+</div>
