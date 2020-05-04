@@ -14,8 +14,9 @@ export class CompetitionComponent implements OnInit {
   constructor(private http: HttpService) {}
 
   ngOnInit() {
-    this.state = history.state;
-    console.log('STATE', this.state);
+    if (history.state) {
+      this.state = history.state;
+    }
 
     this.http.getMatches(this.state.data.id).subscribe((data) => {
       this.matches = data['matches'].filter(
