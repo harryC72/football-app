@@ -11,10 +11,10 @@
     <div *ngFor="let match of Matches">
       <a
         class="flex-grid content"
-        [routerLink]="['/' + state.data.name, match.id]"
+        [routerLink]="['/' + state.name, match.id]"
         [state]="{ data: { id: match.id } }"
       >
-        <div class="col rim">{{ state.data.name }}</div>
+        <div class="col rim">{{ state.name }}</div>
         <div class="col rim">{{ match.homeTeam }}</div>
         <div class="col rim">{{ match.awayTeam }}</div>
       </a>

@@ -2,6 +2,7 @@ import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../notification.service';
 import { Competitions } from '../../interfaces/competitions';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,17 @@ import { Competitions } from '../../interfaces/competitions';
 })
 export class HomeComponent implements OnInit {
   Competitions;
+  locationSubscription;
 
   constructor(
     private http: HttpService,
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private location: Location
   ) {}
 
   ngOnInit() {
+    this.location.subscribe((x) => console.log(x));
+
     this.http.getCompetitions().subscribe({
       next: (data) => {
         const filteredData = data['competitions'].filter(
@@ -36,5 +41,11 @@ export class HomeComponent implements OnInit {
         this.notifyService.showError(error.message, error.status);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.locationSubscription) {
+      this.locationSubscription.unsubscribe();
+    }
   }
 }

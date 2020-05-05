@@ -10,7 +10,10 @@ import { UIStateService } from '../../ui-state-service.service';
   styleUrls: ['./matches.component.scss'],
 })
 export class MatchesComponent implements OnInit {
-  state;
+  // state;
+  idState: string;
+  nameState: string;
+  name: string;
   Matches: object;
   public errorMessage = '';
 
@@ -21,17 +24,15 @@ export class MatchesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if (history.state) {
     //   this.state = history.state;
-    // }
-    this.uiStateService.setState({
-      id: history.state.data.id,
-      name: history.state.data.name,
-    });
-    this.state = this.uiStateService.getState();
-    console.log('STATE IN CONTROLLER', this.state);
+    const state = this.uiStateService.getState();
+    this.setIdState(state.id);
+    this.setNameState(state.name);
 
-    this.http.getMatches(this.state.id).subscribe({
+    this.setCurrentIdState(history.state.data.id);
+    this.setCurrentNameState(history.state.data.name);
+
+    this.http.getMatches(this.idState).subscribe({
       next: (data) => {
         const filteredData = data['matches'].filter(
           (item) => item.status !== 'FINISHED'
@@ -50,9 +51,35 @@ export class MatchesComponent implements OnInit {
       },
     });
   }
-}
 
-// getUser(): Observable<User[]> {
-//   return this.http.get('/api/user')
-//     .map((res: Response) => res.json().response.map((user: User) => new User().deserialize(user)));
-// }
+  setIdState(id) {
+    return id;
+  }
+
+  setCurrentIdState(id) {
+    return id;
+  }
+
+  getCurrentIdState() {
+    return this.idState;
+  }
+
+  setNameState(name) {
+    return name;
+  }
+
+  setCurrentNameState(name) {
+    return name;
+  }
+
+  getCurrentNameState() {
+    return this.nameState;
+  }
+
+  ngOnDestroy() {
+    this.uiStateService.setState({
+      id: this.getCurrentIdState(),
+      name: this.getCurrentNameState(),
+    });
+  }
+}
