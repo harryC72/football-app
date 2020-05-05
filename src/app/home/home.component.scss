@@ -1,7 +1,13 @@
 @import "../../styles.scss";
 
-.grand-box {
-  margin-left: 10px;
+#holder {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 10px;
 }
 
 ul {
@@ -10,6 +16,8 @@ ul {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 
   li {
     background: rgb(238, 238, 238);

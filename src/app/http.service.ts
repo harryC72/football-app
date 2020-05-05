@@ -1,7 +1,8 @@
+import { MatchModel } from './../interfaces/match';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 // const httpOptions = {
@@ -30,8 +31,8 @@ export class HttpService {
     });
   }
 
-  getMatch(id) {
-    return this.http.get(this.baseUrl + `/v2/matches/${id}`, {
+  getMatch(id): Observable<MatchModel> {
+    return this.http.get<MatchModel>(this.baseUrl + `/v2/matches/${id}`, {
       headers: { 'X-Auth-Token': '6205d859b6ac49218baf2da7c9eda323' },
     });
   }

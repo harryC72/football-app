@@ -1,6 +1,8 @@
 import { HttpService } from '../../http.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../../notification.service';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event',
@@ -19,7 +21,7 @@ export class EventComponent implements OnInit {
     this.state = history.state;
     console.log('STATE EVENT', this.state);
 
-    this.http.getMatch(this.state.data.id).subscribe({
+    this.http.getMatch(this.state.data.matchId).subscribe({
       next: (data) => (this.match = data),
       error: (error) => {
         this.notifyService.showError(error.message, error.status);

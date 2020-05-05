@@ -20,7 +20,7 @@ interface Season {
   currentMatchDay: 46;
 }
 
-export interface Match {
+export interface MatchModel {
   head2head: {
     homeTeam: HomeTeam;
     awayTeam: AwayTeam;

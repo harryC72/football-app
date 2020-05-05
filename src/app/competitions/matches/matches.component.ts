@@ -1,5 +1,5 @@
 import { HttpService } from '../../http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../notification.service';
 import { UIStateService } from '../../ui-state-service.service';
@@ -24,14 +24,33 @@ export class MatchesComponent implements OnInit {
     // if (history.state) {
     //   this.state = history.state;
     // }
-    this.uiStateService.setState({
+
+    this.state = this.uiStateService.getState();
+    if (!this.state) {
+      this.uiStateService.setState({
+        id: history.state.data.id,
+        name: history.state.data.name,
+      });
+      this.state = this.uiStateService.getState();
+    }
+
+    this.getMatches();
+  }
+
+  setState(state) {
+    return state;
+  }
+
+  setCurrentState() {
+    return {
       id: history.state.data.id,
       name: history.state.data.name,
-    });
-    this.state = this.uiStateService.getState();
-    console.log('STATE IN CONTROLLER', this.state);
+    };
+  }
 
-    this.http.getMatches(this.state.id).subscribe({
+  getMatches() {
+    const reqState = this.uiStateService.getState();
+    this.http.getMatches(reqState.id).subscribe({
       next: (data) => {
         const filteredData = data['matches'].filter(
           (item) => item.status !== 'FINISHED'
@@ -42,6 +61,10 @@ export class MatchesComponent implements OnInit {
             id: item.id,
             homeTeam: item.homeTeam.name,
             awayTeam: item.awayTeam.name,
+            status: item.status,
+            startDate: item.season.startDate,
+            endDate: item.season.endDate,
+            currentMatchday: item.season.currentMatchday,
           };
         });
       },
@@ -50,6 +73,11 @@ export class MatchesComponent implements OnInit {
       },
     });
   }
+
+  // ngOnDestroy() {
+  //   const currentState = this.setCurrentState();
+  //   this.uiStateService.setState(currentState);
+  // }
 }
 
 // getUser(): Observable<User[]> {

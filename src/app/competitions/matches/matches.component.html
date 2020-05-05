@@ -11,10 +11,16 @@
     <div *ngFor="let match of Matches">
       <a
         class="flex-grid content"
-        [routerLink]="['/' + state.name, match.id]"
-        [state]="{ data: { id: match.id } }"
+        [routerLink]="['/' + state.name, match.homeTeam + match.awayTeam]"
+        [state]="{ data: { matchId: match.id } }"
       >
-        <div class="col rim">{{ state.name }}</div>
+        <div class="col rim">
+          <div>{{ state.name }}</div>
+          <div *ngIf="match.status === 'LIVE'" class="live">
+            Live
+          </div>
+
+        </div>
         <div class="col rim">{{ match.homeTeam }}</div>
         <div class="col rim">{{ match.awayTeam }}</div>
       </a>
