@@ -1,5 +1,6 @@
 import { HttpService } from '../../http.service';
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../../notification.service';
 
 @Component({
   selector: 'app-event',
@@ -9,15 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class EventComponent implements OnInit {
   state;
   match;
-  constructor(private http: HttpService) {}
+  constructor(
+    private http: HttpService,
+    private notifyService: NotificationService
+  ) {}
 
   ngOnInit(): void {
     this.state = history.state;
     console.log('STATE EVENT', this.state);
 
-    this.http.getMatch(this.state.data.id).subscribe((data) => {
-      this.match = data;
-      console.log(this.match);
+    this.http.getMatch(this.state.data.id).subscribe({
+      next: (data) => (this.match = data),
+      error: (error) => {
+        this.notifyService.showError(error.message, error.status);
+      },
     });
   }
 }

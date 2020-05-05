@@ -15,25 +15,23 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class HttpService {
+  baseUrl = 'https://api.football-data.org';
   constructor(private http: HttpClient) {}
 
   getCompetitions() {
-    return this.http.get('https://api.football-data.org/v2/competitions', {
+    return this.http.get(this.baseUrl + '/v2/competitions', {
       headers: { 'X-Auth-Token': '6205d859b6ac49218baf2da7c9eda323' },
     });
   }
 
   getMatches(term: string) {
-    return this.http.get(
-      `https://api.football-data.org/v2/competitions/${term}/matches`,
-      {
-        headers: { 'X-Auth-Token': '6205d859b6ac49218baf2da7c9eda323' },
-      }
-    );
+    return this.http.get(this.baseUrl + `/v2/competitions/${term}/matches`, {
+      headers: { 'X-Auth-Token': '6205d859b6ac49218baf2da7c9eda323' },
+    });
   }
 
   getMatch(id) {
-    return this.http.get(`https://api.football-data.org//v2/matches/${id}`, {
+    return this.http.get(this.baseUrl + `/v2/matches/${id}`, {
       headers: { 'X-Auth-Token': '6205d859b6ac49218baf2da7c9eda323' },
     });
   }

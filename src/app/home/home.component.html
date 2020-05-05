@@ -1,17 +1,17 @@
 <div class="grand-box">
   <h1>Competitions</h1>
-  <div *ngIf="competitions === undefined">
+  <div *ngIf="Competitions === undefined">
     <app-spinner></app-spinner>
   </div>
-  <ul *ngIf="competitions">
-    <li *ngFor="let comp of competitions">
+  <ul *ngIf="Competitions">
+    <li *ngFor="let comp of Competitions">
       <a
         [title]="comp.name + ' details'"
         [routerLink]="['/', comp.name]"
         [state]="{ data: { name: comp.name, id: comp.id } }"
       >
         <p class="name">{{ comp.name }}</p>
-        <p class="country">{{ comp.area.name }}</p>
+        <p class="country">{{ comp.country }}</p>
       </a>
     </li>
   </ul>

@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+// /* You can add global styles to this file, and also import other style files */
+
 @import "~normalize.css";
 
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
@@ -131,7 +132,7 @@ h1 {
   background: white;
   color: #000000;
   cursor: pointer;
-  height: 66px;
+  height: auto;
 }
 
 .rim {
@@ -139,8 +140,8 @@ h1 {
   padding: 8px 0 8px 10px;
 }
 
-.center {
-  justify-content: center;
+.spread {
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -150,9 +151,11 @@ h1 {
 
 .content-box-small {
   background: $content-box;
-  margin: 3px;
-  padding: 3px;
+  margin: 5px;
+  padding: 5px;
   color: #000000;
+  height: 100%;
+  align-items: stretch;
 }
 
 .box-stretch {

@@ -1,5 +1,7 @@
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../notification.service';
+import { Competitions } from '../../interfaces/competitions';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  competitions;
+  Competitions;
 
-  constructor(private http: HttpService) {}
+  constructor(
+    private http: HttpService,
+    private notifyService: NotificationService
+  ) {}
 
   ngOnInit() {
-    this.http.getCompetitions().subscribe((data) => {
-      this.competitions = data['competitions'].filter(
-        (item) => item.plan === 'TIER_ONE'
-      );
+    this.http.getCompetitions().subscribe({
+      next: (data) => {
+        const filteredData = data['competitions'].filter(
+          (item) => item.plan === 'TIER_ONE'
+        );
 
-      // this.competitions = data;
-      console.log(this.competitions);
+        this.Competitions = filteredData.map((comp) => {
+          return {
+            id: comp.id,
+            name: comp.name,
+            country: comp.area.name,
+          };
+        });
+      },
+
+      error: (error) => {
+        this.notifyService.showError(error.message, error.status);
+      },
     });
   }
 }
