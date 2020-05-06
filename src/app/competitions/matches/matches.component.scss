@@ -1,37 +1,12 @@
 @import "../../../styles.scss";
 
-.flex-grid {
-  display: flex;
-  height: 22px;
-}
-
-.box {
-  margin: auto;
-  width: 80%;
-  background: $primary;
-  text-decoration: none;
-}
-
-.col {
-  flex: 1;
-}
-
 .above {
   padding-left: 8px;
-}
-
-@media (max-width: 400px) {
-  .flex-grid {
-    display: block;
-  }
 }
 
 .flex-grid-thirds {
   display: flex;
   justify-content: space-between;
-}
-.flex-grid-thirds .col {
-  width: 32%;
 }
 
 .top {
@@ -49,12 +24,40 @@
   text-decoration: none;
 }
 
-.rim {
-  border: 1px solid #d7d7d7;
-  padding: 8px 0 8px 10px;
-}
-
 .live {
   color: #979797;
   text-transform: uppercase;
+}
+
+
+@media (max-width: 400px) {
+ 
+
+  a.bag {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    background: white;
+    color: #000000;
+    cursor: pointer;
+    height: auto;
+    margin: 8px 0;
+    background: $background;
+  }
+
+  .frame {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    > div {
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      border: 1px solid #d7d7d7;
+      width: 100px;
+      :first-child {
+        color: #979797;
+      }
+    }
+  }
 }

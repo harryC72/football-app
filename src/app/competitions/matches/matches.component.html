@@ -1,9 +1,9 @@
 <div *ngIf="Matches === undefined">
   <app-spinner></app-spinner>
 </div>
-<div *ngIf="Matches">
+<div class="hide" *ngIf="Matches">
   <div class="box">
-    <div class="flex-grid top">
+    <div class="flex-grid top hide">
       <div class="col above">League</div>
       <div class="col above">Home Team</div>
       <div class="col above">Away Team</div>
@@ -15,15 +15,51 @@
         [state]="{ data: { matchId: match.id } }"
       >
         <div class="col rim">
-          <div>{{ state.name }}</div>
+          <div>
+            <div class="show">League</div>
+            <div>{{ state.name }}</div>
+          </div>
           <div *ngIf="match.status === 'LIVE'" class="live">
             Live
           </div>
-
         </div>
-        <div class="col rim">{{ match.homeTeam }}</div>
-        <div class="col rim">{{ match.awayTeam }}</div>
+        <div class="col rim">
+          <div class="show">Home team</div>
+          <div>{{ match.homeTeam }}</div>
+        </div>
+        <div class="col rim">
+          <div class="show">Away team</div>
+          <div>{{ match.awayTeam }}</div>
+        </div>
       </a>
     </div>
+  </div>
+</div>
+
+<div class="show" *ngIf="Matches">
+  <div *ngFor="let match of Matches">
+    <a
+      class="bag"
+      [routerLink]="['/' + state.name, match.homeTeam + match.awayTeam]"
+      [state]="{ data: { matchId: match.id } }"
+    >
+      <div class="frame">
+        <div>
+          <div>League</div>
+          <div>{{ state.name }}</div>
+        </div>
+        <div *ngIf="match.status === 'LIVE'" class="live">
+          Live
+        </div>
+        <div>
+          <div>Home team</div>
+          <div>{{ match.homeTeam }}</div>
+        </div>
+        <div>
+          <div>Away team</div>
+          <div>{{ match.awayTeam }}</div>
+        </div>
+      </div>
+    </a>
   </div>
 </div>

@@ -4,8 +4,8 @@
 
 <div class="container" *ngIf="match">
   <div class="flex-grid top rim spread">
-    <span></span>
-    <span
+    <span class="hide"></span>
+    <span class="title"
       >{{ match.head2head.homeTeam.name }} vs
       {{ match.head2head.awayTeam.name }}</span
     >
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div>
-      <div class="image-container">
+      <div class="image-container" class="hide">
         <div class="top-left">
           <div>
             Fotball / {{ match.match.competition.name }}
@@ -77,7 +77,7 @@
         />
       </div>
     </div>
-    <div>
+    <div class="hide">
       <img
         id="logo-side"
         alt="Betsson-logo"

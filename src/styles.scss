@@ -100,6 +100,7 @@ h1 {
   margin: auto;
   width: 80%;
   background: $primary;
+  text-decoration: none;
 }
 
 .flex-grid {
@@ -110,8 +111,19 @@ h1 {
   flex: 1;
 }
 
+.show {
+  display: none;
+}
+
 @media (max-width: 400px) {
   .flex-grid {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
+
+  .show {
     display: block;
   }
 }
