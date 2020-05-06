@@ -11,7 +11,7 @@ export class UIStateService {
   }
 
   getState(): UIState {
-    return this.state ? this.state : null /** default state*/;
+    return this.state ? this.state : null;
   }
 }
 

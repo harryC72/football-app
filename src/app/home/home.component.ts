@@ -1,7 +1,6 @@
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../notification.service';
-import { Competitions } from '../../interfaces/competitions';
 import { Location } from '@angular/common';
 
 @Component({
@@ -20,8 +19,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.location.subscribe((x) => console.log(x));
-
     this.http.getCompetitions().subscribe({
       next: (data) => {
         const filteredData = data['competitions'].filter(
@@ -41,11 +38,5 @@ export class HomeComponent implements OnInit {
         this.notifyService.showError(error.message, error.status);
       },
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.locationSubscription) {
-      this.locationSubscription.unsubscribe();
-    }
   }
 }

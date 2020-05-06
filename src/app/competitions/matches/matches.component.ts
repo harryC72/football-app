@@ -1,6 +1,5 @@
 import { HttpService } from '../../http.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../../notification.service';
 import { UIStateService } from '../../ui-state-service.service';
 
@@ -21,10 +20,6 @@ export class MatchesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if (history.state) {
-    //   this.state = history.state;
-    // }
-
     this.state = this.uiStateService.getState();
     if (!this.state) {
       this.uiStateService.setState({
@@ -73,14 +68,4 @@ export class MatchesComponent implements OnInit {
       },
     });
   }
-
-  // ngOnDestroy() {
-  //   const currentState = this.setCurrentState();
-  //   this.uiStateService.setState(currentState);
-  // }
 }
-
-// getUser(): Observable<User[]> {
-//   return this.http.get('/api/user')
-//     .map((res: Response) => res.json().response.map((user: User) => new User().deserialize(user)));
-// }

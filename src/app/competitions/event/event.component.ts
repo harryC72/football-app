@@ -17,7 +17,6 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.state = history.state;
-    console.log('STATE EVENT', this.state);
 
     this.http.getMatch(this.state.data.matchId).subscribe({
       next: (data) => (this.match = data),
