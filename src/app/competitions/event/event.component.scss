@@ -83,10 +83,13 @@ svg {
 
   title {
     float: right;
-    padding-left: 20px;
   }
 
   .content-box {
     justify-content: center;
+  }
+
+  div.flex-grid.top.rim.spread {
+    padding-left: 25px;
   }
 }
