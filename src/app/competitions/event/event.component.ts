@@ -1,8 +1,6 @@
 import { HttpService } from '../../http.service';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../../notification.service';
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event',
